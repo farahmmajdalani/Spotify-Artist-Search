@@ -1,0 +1,28 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+h2 {
+  position : absolute;
+  top: 100px;
+  padding-left: 40px;
+  font-weight: lighter;
+}
+.grid-container {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 2em;
+  width: 100%;
+  position:absolute;
+  top: 230px;
+}
+  
+.grid-videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 2em;
+}
+@media(max-width:612px) {
+  .grid-container {
+    padding-left: 25%;
+  }
+}  
