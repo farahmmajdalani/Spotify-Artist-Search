@@ -14,7 +14,7 @@ const routes: Routes = [
     component: SearchComponent
   },
   {
-    path:'artist/:id', 
+    path:'artist/:id', //go to artist component with correspoding artist id
     component: ArtistComponent
   },
   { path: '**', redirectTo: '' }

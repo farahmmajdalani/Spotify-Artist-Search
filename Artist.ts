@@ -1,6 +1,6 @@
-// create a model of each artist 
+// create a class of each artist 
+
 export class Artist{
-    
     id: any;
     name: string = "";
     followers: any;

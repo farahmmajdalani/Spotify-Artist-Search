@@ -1,10 +1,14 @@
 <html>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <form id="form">
+        <!-- ngModel to set the value of the input to the correspoding typescript file -->
+        <!-- when we start typing, the fuction searchMusic will automatically execute (search-as-you-type) -->
         <input type="text" [(ngModel)]='searchBar' (keyup)="searchMusic()" class="search-bar" id="search-bar" name="searchBar" placeholder="Search for Artist...">
+        <!-- when you click the button or return key the function is executed as well -->
         <button type="submit" id="search" class="fa fa-search" (click)="searchMusic()"></button>
     </form>
 
+    <!-- div to put the search results in-->
     <div class="grid-container">
         <div class="grid-videos" id="grid-videos">
         </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Album } from '../../../Album';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-artist',
@@ -11,14 +11,16 @@ export class ArtistComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {  }
 
-  id: any;
-  searchRes: Album[] = [];
+  id: any; //get artist id from url
+  searchRes: Album[] = []; //set each album of the artist of type Album from the GET results
 
   ngOnInit(): void { 
+    //get the id of the artist from the url
     this.id = this.route.snapshot.paramMap.get("id")
-    console.log(this.id);
     
     var OAuth_Token = localStorage.getItem("access_token");
+
+    //get the artist's name from the given id
     var artistSearch = new XMLHttpRequest();
     artistSearch.onload = function() {
       var response = this.responseText;
@@ -41,14 +43,16 @@ export class ArtistComponent implements OnInit {
 
     var searchRes = this.searchRes;
     var grid = document.getElementById("grid-videos");
-
+    
+    //get the album results 
     var albumResults = new XMLHttpRequest();
     albumResults.onload = function() {
       var response = this.responseText;
       var res = JSON.parse(response);
       
-      console.log(res);
       searchRes = res.items;
+
+      //loop over the array of albums in searchRes and display each item of the array in a div
       searchRes.forEach(album => {
         var div = document.createElement("div");
         div.style.border = "1px solid black";
@@ -74,20 +78,22 @@ export class ArtistComponent implements OnInit {
         title.innerHTML = album.name;
         title.style.fontSize = "20px";
 
-        var followers = document.createElement("p");
+        var albumArtist = document.createElement("p");
         var albumArtists: string[] = [];
+        //loop over the array of artists in the album and add even to the new array 'albumArtist'
         for (var i = 0; i < album.artists.length; i++){
           albumArtists.push(album.artists[i].name);
         }
+        //join all the elements of the array 'albumArtists' and seperate them by a dash
         var src = albumArtists.join(" - ");
-        followers.innerHTML =  src;
+        albumArtist.innerHTML =  src;
         console.log(albumArtists);
-        followers.style.marginTop = "-12px";
-        followers.style.fontSize = "12px";
-        followers.style.color = "gray";
+        albumArtist.style.marginTop = "-12px";
+        albumArtist.style.fontSize = "12px";
+        albumArtist.style.color = "gray";
 
         divDesc.appendChild(title);
-        divDesc.appendChild(followers);
+        divDesc.appendChild(albumArtist);
 
         var div2 = document.createElement("div");
         div2.style.marginTop = "20px";
@@ -96,6 +102,7 @@ export class ArtistComponent implements OnInit {
         var releaseDate = document.createElement("p");
         releaseDate.innerHTML =  album.release_date;
         releaseDate.style.color = "gray";
+
         var tracks = document.createElement("p");
         tracks.innerHTML =  album.total_tracks + " tracks";
         tracks.style.marginTop = "-12px";
@@ -105,11 +112,12 @@ export class ArtistComponent implements OnInit {
         div2.appendChild(tracks);
         divDesc.appendChild(div2);
         
+        //clickable link that opens to a new tab to the spotify preview of the album
         var preview = document.createElement("a");
         preview.href = album.external_urls.spotify;
         preview.style.textDecoration = "none";
         preview.style.color = "gray";
-        preview.target = "_blank";
+        preview.target = "_blank"; //to go to new tab
         
         var divPreview = document.createElement("div");
         divPreview.innerHTML = "Preview on Spotify";

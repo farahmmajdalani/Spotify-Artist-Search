@@ -1,3 +1,5 @@
+//create a class for each album
+
 import {Artist} from "Artist";
 
 export class Album{
