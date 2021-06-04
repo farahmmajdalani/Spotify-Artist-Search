@@ -12,13 +12,11 @@ button {
     text-align: center;
 }
 button:hover{
-    background-color: rgb(235, 235, 235);
+    background-color: #1ed760;
 }
 #login img{
-    position: absolute;
-    right: 10px;
-    top: 5px;
     width: 30px;
+    padding-right: 5px;
 }
 #login span{
     color: gray;
