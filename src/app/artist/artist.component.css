@@ -39,10 +39,11 @@ h2 {
   margin-right: 5px;
 }
 @media(max-width:628px) {
-  .grid-container,.pagination {
+  .grid-container {
     padding-left: 25%;
   }
   .pagination{
+    padding-left: 20%;
     text-align: left;
   }
 }

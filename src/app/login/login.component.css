@@ -13,6 +13,7 @@ button {
 }
 button:hover{
     background-color: #1ed760;
+    border-color: #1ed760;
 }
 #login img{
     width: 30px;

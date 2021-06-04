@@ -20,7 +20,7 @@ form .search-bar{
   text-align: center;
 }
 form .search-bar:hover{
-  background-color: rgb(235, 235, 235);
+  background-color: #daffe7;
 }
 form #search {
   padding: 10px 15px;
@@ -65,10 +65,11 @@ form #search {
   margin-right: 5px;
 }
 @media(max-width:628px) {
-  .grid-container,.pagination {
+  .grid-container {
     padding-left: 25%;
   }
   .pagination{
+    padding-left: 20%;
     text-align: left;
   }
 }
