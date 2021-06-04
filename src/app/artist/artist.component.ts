@@ -18,6 +18,7 @@ export class ArtistComponent implements OnInit {
   limit = 20;
 
   ngOnInit(): void { 
+    localStorage.setItem("back", 'true');
     
     //if session expires after an hour go back to login page 
     var exp = Number(localStorage.getItem("expires_in")!) * 1000;
