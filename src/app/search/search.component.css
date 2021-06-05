@@ -72,4 +72,7 @@ form #search {
     padding-left: 20%;
     text-align: left;
   }
+  form .search-bar{
+    padding-left: 10px;
+  }
 }
