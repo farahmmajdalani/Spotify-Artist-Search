@@ -3,9 +3,9 @@
     <form id="form">
         <!-- ngModel to set the value of the input to the correspoding typescript file -->
         <!-- when we start typing, the fuction searchMusic will automatically execute (search-as-you-type) -->
-        <input type="text" [(ngModel)]='searchBar' (keyup)="searchMusic()" class="search-bar" id="search-bar" name="searchBar" placeholder="Search for Artist...">
+        <input type="text" [(ngModel)]='searchBar' (keyup)="debounceForData()" class="search-bar" id="search-bar" name="searchBar" placeholder="Search for Artist...">
         <!-- when you click the button or return key the function is executed as well -->
-        <button type="submit" id="search" class="fa fa-search" (click)="searchMusic()"></button>
+        <button type="submit" id="search" class="fa fa-search" (click)="debounceForData()"></button>
     </form>
 
     <!-- div to put the search results in-->

@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
   currentRate = 0; //set star rating for each artist
   offset = '0';
   limit = 20;
-
+  
   ngOnInit(): void {  
     
     this.searchBar = localStorage.getItem("searchBar")!; //set the searchbar to have the value of the previously saved value
@@ -43,7 +43,21 @@ export class SearchComponent implements OnInit {
       location.href = 'http://localhost:4200/';
     }, exp);
   }
-  
+
+  //perform debouncing to limit the number of requests to the server
+  debounce =  (...args: any[]) => {
+    let timer:any;
+    return  () => {
+    let context = this;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      args[0].apply(context, args);
+        }, args[1])
+    }
+  }
+
+  public debounceForData = this.debounce(this.searchMusic, 700);
+
   public searchMusic(){
     if (localStorage.getItem("back")=='true'){
       this.offset = localStorage.getItem("offset")!;
